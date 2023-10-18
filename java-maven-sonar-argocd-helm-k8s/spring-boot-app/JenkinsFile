@@ -52,7 +52,7 @@ stages {
                 sh '''
                     git config user.email "konark.xyz@gmail.com"
                     git config user.name "konark111"
-                    OLD_BUILD_NUMBER=$(grep 'image:.*your-image-name:.*' java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml | cut -d ':' -f3)
+                    OLD_BUILD_NUMBER=$(grep 'image:.*konark111/ultimate-cicd:.*' java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml | cut -d ':' -f3)
                     sed -i "s/${OLD_BUILD_NUMBER}/${BUILD_NUMBER}/g" java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
                     git add java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
                     git commit -m "Updated deployment image to version ${BUILD_NUMBER}"
